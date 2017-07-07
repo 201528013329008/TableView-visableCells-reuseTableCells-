@@ -10,8 +10,8 @@
     // 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存
     static NSString *ID = @"cell";
 
-    // 1.先根据cell的标识去缓存池中查找可循环利用的cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    // 1.先根据cell的标识去缓存池中查找可循环利用的cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
 
     // 2.如果cell为nil（缓存池找不到对应的cell）
     if (cell == nil) {
@@ -126,13 +126,13 @@ cell.accessoryView = [[UISwitch alloc] init];
             ![](images/Snip20150602_302.png)
             - 设置cell的重用标识<br>
             ![](images/Snip20150602_303.png)
-            - 设置cell的class为XMGDealCell<br>
+            - 设置cell的class为JYDealCell<br>
            
         - 3.在控制器中
             - 利用重用标识找到cell
             - 给cell传递模型数据<br>
             ![](images/Snip20150602_301.png)
-        - 4.在XMGDealCell中
+        - 4.在JYDealCell中
             - 将storyboard中的子控件连线到类扩展中<br>
             ![](images/Snip20150602_299.png)
             - 需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件上<br>
@@ -140,43 +140,43 @@ cell.accessoryView = [[UISwitch alloc] init];
             ![](images/Snip20150602_300.png)
 
     - `xib自定义cell`
-        - 1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<br>
-        - 2.创建一个xib文件（文件名建议跟cell的类名一样），比如XMGDealCell.xib
+        - 1.创建一个继承自UITableViewCell的子类，比如JYDealCell<br>
+        - 2.创建一个xib文件（文件名建议跟cell的类名一样），比如JYDealCell.xib
             - 拖拽一个UITableViewCell出来
-            - 修改cell的class为XMGDealCell
+            - 修改cell的class为JYDealCell
             - 设置cell的重用标识
             - 往cell中添加需要用到的子控件
         - 3.在控制器中
             - 利用registerNib...方法注册xib文件
             - 利用重用标识找到cell（如果没有注册xib文件，就需要手动去加载xib文件）
             - 给cell传递模型数据<br>
-        - 4.在XMGDealCell中
+        - 4.在JYDealCell中
             - 将xib中的子控件连线到类扩展中
             - 需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件上
             - 也可以将创建获得cell的代码封装起来（比如cellWithTableView:方法）
 
     - `代码自定义cell(使用frame)`
-        - 1.创建一个继承自UITableViewCell的子类，比如XMGDealCell
+        - 1.创建一个继承自UITableViewCell的子类，比如JYDealCell
             - 在initWithStyle:reuseIdentifier:方法中
                 - 添加子控件
                 - 设置子控件的初始化属性（比如文字颜色、字体）
             - 在layoutSubviews方法中设置子控件的frame
             - 需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件
         - 2.在控制器中
-            - 利用registerClass...方法注册XMGDealCell类
+            - 利用registerClass...方法注册JYDealCell类
             - 利用重用标识找到cell（如果没有注册类，就需要手动创建cell）
             - 给cell传递模型数据
             - 也可以将创建获得cell的代码封装起来（比如cellWithTableView:方法）
 
     - `代码自定义cell(使用autolayout)`
-        - 1.创建一个继承自UITableViewCell的子类，比如XMGDealCell
+        - 1.创建一个继承自UITableViewCell的子类，比如JYDealCell
             - 在initWithStyle:reuseIdentifier:方法中
                 - 添加子控件
                 - 添加子控件的约束（建议使用`Masonry`）
                 - 设置子控件的初始化属性（比如文字颜色、字体）
             - 需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件
         - 2.在控制器中
-            - 利用registerClass...方法注册XMGDealCell类
+            - 利用registerClass...方法注册JYDealCell类
             - 利用重用标识找到cell（如果没有注册类，就需要手动创建cell）
             - 给cell传递模型数据
             - 也可以将创建获得cell的代码封装起来（比如cellWithTableView:方法）
