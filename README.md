@@ -134,10 +134,21 @@ cell.accessoryView = [[UISwitch alloc] init];
             ![](images/Snip20150602_301.png)
         - 4.在JYDealCell中
             - 将storyboard中的子控件连线到类扩展中<br>
-            ![](images/Snip20150602_299.png)
+            
             - 需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件上<br>
-            ![](images/Snip20150602_298.png)
-            ![](images/Snip20150602_300.png)
+              ```objc
+              // 3.重写模型的set方法，JYDealCell与view联系起来
+            - (void)setDeal:(XMGDeal *)deal
+            {
+                _deal = deal;
+
+                // 设置数据
+                self.iconView.image = [UIImage imageNamed:deal.icon];
+                self.titleLabel.text = deal.title;
+                self.priceLabel.text = [NSString stringWithFormat:@"￥%@", deal.price];
+                self.buyCountLabel.text = [NSString stringWithFormat:@"%@人已购买", deal.buyCount];
+            }
+```
 
     - `xib自定义cell`
         - 1.创建一个继承自UITableViewCell的子类，比如JYDealCell<br>
