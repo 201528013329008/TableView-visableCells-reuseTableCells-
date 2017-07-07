@@ -152,7 +152,8 @@ cell.accessoryView = [[UISwitch alloc] init];
                     }
              ```
 
-    - `xib自定义cell`
+
+   - `xib自定义cell`
         - 1.创建一个继承自UITableViewCell的子类，比如JYDealCell<br>
         - 2.创建一个xib文件（文件名建议跟cell的类名一样），比如JYDealCell.xib
             - 拖拽一个UITableViewCell出来
