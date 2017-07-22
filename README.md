@@ -133,7 +133,7 @@ cell.accessoryView = [[UISwitch alloc] init];
         - 3.在控制器中
             - 利用重用标识找到cell
             - 给cell传递模型数据<br>
-            ![](images/Snip20150602_301.png)
+
         - 4.在JYDealCell中
             - 将storyboard中的子控件连线到类扩展中<br>
             
